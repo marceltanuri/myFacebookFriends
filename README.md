@@ -9,7 +9,8 @@ A credential file is needed to make the request valid.
 // find these values by inspecting a request from your facebook account.
 const data = {
     securityParams : "", // inspect the body of the post request
-    fbCookies : "" // inspect the request cookies
+    fbCookies : "", // inspect the request cookies
+    docId : "" // inspect the body of the post request
 }
 
 exports.data = data

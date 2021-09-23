@@ -6,10 +6,13 @@ let myFriends = []
 
 async function callFB(page) {
 
-    let cursor = (page != null && page != "") ? page : ""
-    let variables_json = { "count": 30, "cursor": cursor, "name": null, "scale": 1 }
-    const variables = JSON.stringify(variables_json)
-    let postData = credentials.data.securityParams + "&fb_api_caller_class=RelayModern&fb_api_req_friendly_name=FriendingCometFriendsListPaginationQuery&variables=" + variables + "&server_timestamps=true&doc_id=4268740419836267";
+    let pagination_variables = { 
+        "count": 30, 
+        "cursor": (page != null && page != "") ? page : "", 
+        "name": null, "scale": 1 
+    }
+
+    let postData = `${credentials.data.securityParams}&fb_api_caller_class=RelayModern&fb_api_req_friendly_name=FriendingCometFriendsListPaginationQuery&variables=${JSON.stringify(pagination_variables)}&server_timestamps=true&doc_id=${credentials.data.docId}`;
 
     let axiosConfig = {
         headers: {
